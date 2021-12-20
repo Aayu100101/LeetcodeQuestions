@@ -1,0 +1,48 @@
+Approach 4 - O(1) space complexity.
+
+Explanation - Unlike Approach 3, we won't take two separate arrays. Instead, we use the first row & first column of our matrix only.
+              Two things to keep in mind here:
+              1. While resetting the values to 0 using lookup table (first row & column of the matrix here), we will traverse from the end because we do not want to manipulate our 
+                 lookup arrays at first. After all of the manipulations in the rest of the table is done, we can manipulate our lookup arrays as well.
+              2. If we find a 0 in first column, We shouldn't be setting matrix[0][0] to 0 because it will manipulate our whole first row to 0 which is wrong.
+                 So, for this case, We will use a boolean variable that will tell us whether we have to make first column to 0 or not (so, we don't require matrix[0][0] value)
+
+Result - Time: Better than 48.24% of the C++ submissions.
+         Space : Better than 96.19% of the C++ submissions.
+
+Code - 
+
+class Solution {
+public:
+  
+    void setZeroes(vector<vector<int>>& matrix) {
+        int r = matrix.size();
+        int c = matrix[0].size();
+        
+        bool temp = true;
+        
+        for(int i=0;i<r;++i){
+            if(matrix[i][0] == 0){
+                temp = false;
+            }
+            for(int j=1;j<c;++j){
+                if(matrix[i][j] == 0){
+                    matrix[i][0] = 0;
+                    matrix[0][j] = 0;
+                }
+            }
+        }
+        
+        for(int i=r-1;i>=0;--i){
+            for(int j=c-1;j>0;--j){
+                if(matrix[i][0] == 0 || matrix[0][j] == 0){
+                    matrix[i][j] = 0;
+                }
+            }
+            if(!temp){
+                matrix[i][0] = 0;
+            }
+        }
+        
+    }
+};

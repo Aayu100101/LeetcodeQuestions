@@ -1,1 +1,53 @@
 Approach 2 - Better space complexity
+
+Explanation - This approach has better space complexity but works only when your matrix doesn't contain any negative numbers. Approach 1 will work with any input in the matrix.
+              We can assign -1 value for the time being and then change it to 0 afterwards.
+              For this approach, make sure the range of the input in matrix.
+              Inspite of -1, we can make it INT_MAX/INT_MIN or any other convenient values as per constraint.
+
+Result - 163/164 passed because the matrix had negative number.
+
+Code - 
+
+class Solution {
+public:
+    
+    void setValues(int r1,int c1, vector<vector<int>> &matrix){            // setting values to 0.
+        int r = matrix.size();
+        int c = matrix[0].size();
+        
+        for(int i=0;i<c;++i){
+            if(matrix[r1][i] != 0){                                         // not manipulating the 0 values as it can create conflict (can manipulate the next 0)
+                matrix[r1][i] = -1;
+            }
+        }
+        
+        for(int i=0;i<r;++i){
+            if(matrix[i][c1] != 0){ 
+                matrix[i][c1] = -1;
+            }
+        }
+    }
+    
+    void setZeroes(vector<vector<int>>& matrix) {
+        int r = matrix.size();
+        int c = matrix[0].size();
+        
+        for(int i=0;i<r;++i){                                             // checking if value is equal to 0 and setting corresponding rows and columns to -1.
+            for(int j=0;j<c;++j){
+                if(matrix[i][j] == 0){
+                    setValues(i, j, matrix);
+                }
+            }
+        }
+        
+        for(int i=0;i<r;++i){                                            // setting all -1 values to 0.
+            for(int j=0;j<c;++j){
+                if(matrix[i][j] == -1){
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+        
+    }
+};

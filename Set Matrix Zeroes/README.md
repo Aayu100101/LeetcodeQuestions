@@ -27,7 +27,7 @@ n == matrix[0].length
 Approach 1 - Time Complexity: O(n*m)
              Space Complexity : O(n*m)
              
-Approach 2 - Time Complexity: O(n*m)         // Doesn't work with negative numbers
+Approach 2 - Time Complexity: O(n*m)        
              Space Complexity : O(1)
              
 Approach 3 - Time Complexity: O(n*m)

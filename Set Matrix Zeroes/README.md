@@ -22,3 +22,16 @@ m == matrix.length
 n == matrix[0].length
 1 <= m, n <= 200
 -231 <= matrix[i][j] <= 231 - 1
+
+
+Approach 1 - Time Complexity: O(n*m)
+             Space Complexity : O(n*m)
+             
+Approach 2 - Time Complexity: O(n*m)         // Doesn't work with negative numbers
+             Space Complexity : O(1)
+             
+Approach 3 - Time Complexity: O(n*m)
+             Space Complexity : O(n+m)
+
+Approach 4 - Time Complexity: O(n*m)
+             Space Complexity : O(1)

@@ -1,7 +1,13 @@
 Apprach 3 - Better space complexity and no conflict of negative numbers.
 
-Explanation - 
+Explanation - If we already know the rows and columns that we need to set it to 0, our tasks are half done.
+              So, For this. We will take two arrays, one of size row and another of size of column(say row & col).
+              Initialize the two dummy arrays with -1.
+              Traverse the matrix and whenever we find a 0, that means the entire row & column is to be set as 0. 
+              So, we will make this index in our row & col 0 to indicate that this row & col is to be set as 0.
 
-Result - 
+Result - Time - 97.89% better than C++ submissions
+         Space - better than 81.26% C++ submissions.
 
 Code - 
+
